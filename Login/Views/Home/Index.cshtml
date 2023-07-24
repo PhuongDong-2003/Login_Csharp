@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var i = Context.User.Identity.Name;
+    var a = 2;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    @if (!Context.User.Identity.IsAuthenticated)
+    {
+        <form asp-controller="Login" asp-action="CheckLogin" method="Post">
+            <div class="col-sm">
+
+                UserName: <input type="text" name="username" id="userName">
+            </div>
+            <br />
+            <div class="col-sm">
+                Password: <input type="password" name="password" id="password">
+            </div>
+            <br />
+            <div class="col-sm">
+                @* <label>
+            <input type="checkbox" asp-for="KeepLoggedIn" />
+            keep me login
+            </label>*@
+            </div>
+            <div class="col-sm">
+                <button type="submit">Login</button>
+
+
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>@(Context.User.Identity.Name)_abc</p>
+    }
+
+    
+
+
+
+</div>
